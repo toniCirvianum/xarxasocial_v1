@@ -12,20 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('username');
-            $table->string('nick');
-            $table->string('image');
+            $table->string('surname')->nullable();
+            $table->string('nick')->nullable();
+            $table->string('image')->nullable();
             // $table->rememberToken();
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('surname','nick','image','remember_token');
+            $table->dropIfExists('surname','nick','image');
         });
     }
 };
