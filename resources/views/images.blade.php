@@ -13,6 +13,7 @@
         <p>Imatge: {{ $image->id}} -- {{$image->image_path }}</p>
         <p>Descripció: {{ $image -> description}}</p>
         <p>Imatge de: {{ $image-> user->name}} {{ $image-> user->surname }}</p>
+        <p>LIKES: {{count($image->likes) }}</p>
         @if (count($image->comments)>0)
 
             <h4>Comentaris</h4>

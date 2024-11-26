@@ -16,6 +16,8 @@ class testController extends Controller
     public function users() {
         $users = User::all();
         return view ('users',compact('users'));
+        //Ha de tornar els usuaris amb les seves imatges 
+        //i els comentaris i likes corresponents
     }
 }
 
