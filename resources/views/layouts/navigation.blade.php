@@ -12,14 +12,14 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link class="bg-red" :href="route('pelis')" :active="request()->routeIs('dashboard')">
-                        {{ __('List movies')}}
+                    <x-nav-link class="bg-red" :href="route('upload.images')" :active="request()->routeIs('dashboard')">
+                        {{ __('Upload Images')}}
                     </x-nav-link>
                 </div>
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('My images') }}
                     </x-nav-link>
                 </div>
             </div>

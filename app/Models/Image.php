@@ -10,6 +10,11 @@ class Image extends Model
     use HasFactory;
     protected $table='images';
 
+    protected $fillable = [
+        'image_path',
+        'user_id'
+    ];
+
     public function comments() {
         return $this->hasMany(Comment::class);
     }

@@ -87,5 +87,7 @@
     "You're logged in!": "Has iniciat sessió!",
     "Your email address is unverified.": "La teva adreça de correu electrònic no està verificada.",
     "Image":"Imatge de perfil",
-    "Your profile has been update successfully":"El teu perfil d'usuari s'ha actualitzat correcament"
+    "Your profile has been update successfully":"El teu perfil d'usuari s'ha actualitzat correcament",
+    "Upload Images":"Pujar imatges",
+    "My images":"Les meves imatges"
 }
