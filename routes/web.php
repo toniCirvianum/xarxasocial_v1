@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/uploadimages',[ImageController::class,'index'])->name('upload.images');
     Route::patch('/uploadimages',[ImageController::class,'store'])->name('store.image');
     Route::get('detail/{image_id}',[ImageController::class,'detail'])->name('detail.image');
+    Route::post('/comment/store',[CommentController::class,'store'])->name('store.comment');
 
 });
 

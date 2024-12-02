@@ -64,6 +64,20 @@
                                                         </label>
                                                         @endif
                                                     </div>
+                                                    <!-- form to add comments -->
+                                                     <form action="{{ route('store.comment') }}" action="post" >
+                                                        @csrf 
+                                                        <!-- @method('patch') -->
+                                                        <input type="hidden" name='id' value="{{ $image->id}}">
+                                                        <div class="space-y2 px-2">
+                                                            <input type="text" name="content" placeholder="{{ __('Add a comment') }}">
+                                                        </div> 
+                                                        <div>
+                                                            <x-primary-button> {{ __('Save')}}</x-primary-button>
+                                                        </div>
+
+                                                     </form>
+
                                                 </div>
                                             </div>
                                         </custom-card3>
