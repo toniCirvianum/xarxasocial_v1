@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProvaContrller;
@@ -15,9 +17,8 @@ Route::get('/', function () {
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [ImageController::class,'myImages'])
+->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {
@@ -27,6 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('change',[LanguageController::class,'change'])->name('setlang');
     Route::get('/uploadimages',[ImageController::class,'index'])->name('upload.images');
     Route::patch('/uploadimages',[ImageController::class,'store'])->name('store.image');
+    Route::get('detail/{image_id}',[ImageController::class,'detail'])->name('detail.image');
 
 });
 

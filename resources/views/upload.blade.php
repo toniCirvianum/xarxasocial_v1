@@ -7,6 +7,10 @@
                         @csrf
                         @method('patch')
                         <div>
+                            <x-input-label for="description" :value="__('Description')" />
+                            <x-text-input id="description" name="description" type="text" class="mt-1 block w-full"  required autofocus  />
+
+
                             <x-text-input id="image" name="image" type="file" class="mt-1 block w-full" autofocus autocomplete="image" />
                             <x-input-error class="mt-2" :messages="$errors->get('image')" />
                         </div>

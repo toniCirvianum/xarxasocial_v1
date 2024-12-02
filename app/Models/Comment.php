@@ -9,12 +9,13 @@ class Comment extends Model
 {
     use HasFactory;
     protected $table='comments';
+    protected $fillable = ['content', 'user_id', 'image_id'];
 
     public function user() {
         return $this->belongsTo(User::class);
     }
 
     public function image() {
-        return $this->belongsTo(Image::class);
+        return $this->belongsTo(Image::class)->orderBy('created_at', 'desc');
     }
 }

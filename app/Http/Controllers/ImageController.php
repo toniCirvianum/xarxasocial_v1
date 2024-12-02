@@ -8,11 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class ImageController extends Controller
 {
-    public function index () {
+    public function index()
+    {
         return view('upload');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -24,10 +26,15 @@ class ImageController extends Controller
         return redirect()->back()->with('success', 'Image uploaded successfully');
     }
 
-    public function myImages(){
+    public function myImages()
+    {
         $images = Image::all();
-        return $images;
-        // return view ('dashboard', compact('images'));
+        return view('dashboard', compact('images'));
+    }
 
+    public function detail($id)
+    {
+        $image = Image::find($id);
+        return view('image', compact('image'));
     }
 }
