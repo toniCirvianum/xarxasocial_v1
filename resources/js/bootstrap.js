@@ -4,38 +4,76 @@ window.axios = axios;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 import jquery from 'jquery';
-window.$ = window.jQuery = jquery;
 
+//jquery
+// window.$ = window.jQuery = jquery;
 
-//button like
 window.addEventListener('load', function () {
 
+
+    function setLike() {
+        //afegeix like a la BBDD
+
+    }
+
+    function setDislike(){
+        //Treu el like de la BBDD
+        const postId = $(this).data('id');
+        axios.get(apiUrl + "/dislike/" + postId)
+            .then(response => {
+                console.log(response.data);
+                if (response.data.like) {
+                    console.log('dislike afegit!');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+    }
     //button like
-    $('.btn-like').click(function () {
-        console.log('jQuery is like');
-        $(this).addClass('btn-dislike')
-        $(this).removeClass('btn-like');
-        $('#btnlike').hide();
-        //boto de like
+    $(document).on('click', '.btn-like', function () {
+        console.log('dislike afegit!');
+        //canviem la classe del boto per accedir des de l'altra func
+        $(this).addClass('btn-dislike').removeClass('btn-like');
+        //boto de dislike
         const icon = $(this).find('i');
-        icon.removeClass('fa-solid');
-        icon.removeClass('fa-heart');
-        icon.addClass('fa-regular');
-        icon.addClass('fa-heart');
+        icon.removeClass('fa-solid').addClass('fa-regular');
         icon.css('color', '');
+        const postId = $(this).data('id');
+        axios.get(apiUrl + "/dislike/" + postId)
+            .then(response => {
+                console.log(response.data);
+                if (response.data.like) {
+                    console.log('like afegit!');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        
     });
     //button dislike
-    $('.btn-dislike').click(function () {
-        console.log('jQuery dislike!');
+    $(document).on('click', '.btn-dislike', function () {
+        console.log('like afegit!');
+        //canviem la classe del boto per accedir des de l'altra func
         $(this).addClass('btn-like').removeClass('btn-dislike');
-
         //boto de like
         const icon = $(this).find('i');
-        icon.removeClass('fa-regular');
-        icon.removeClass('fa-heart');
-        icon.addClass('fa-solid');
-        icon.addClass('fa-heart');
+        icon.removeClass('fa-regular').addClass('fa-solid');
         icon.css('color', 'red');
+        const postId = $(this).data('id');
+        axios.get(apiUrl + "/like/" + postId)
+            .then(response => {
+                console.log(response.data);
+                if (response.data.like) {
+                    console.log('like eliminat!');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
     });
 
 });
