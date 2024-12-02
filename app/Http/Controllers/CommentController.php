@@ -9,22 +9,35 @@ use Illuminate\Support\Facades\Auth;
 class CommentController extends Controller
 {
     public function store(Request $request) {
-        $request -> validate([
+
+        $request->validate([
             'id' => 'required|integer',
-            'content'=> 'required|string'
+            'comment' => 'required|string'
         ]);
 
+        $image_id = $request->input('id');
+        $comment = $request->input('comment');
         $user_id = Auth::user()->id;
-        $image_id=$request->input('id');
-        $content = $request->input('content');
 
-        Comment::cretae([
-            'user_id'=> $user_id,
-            'image_id'=> $image_id,
-            'content'=>$content
+        Comment::create([
+            'content' => $comment,
+            'user_id' => $user_id,
+            'image_id' => $image_id
         ]);
 
         return redirect()->back();
+    }
 
+    public function delete(Request $request) {
+        $user = Auth::user();
+        $comment = Comment::find($request->input('id'));
+        if ($user)
+            if ($comment->user_id== $user->id || $comment->image->user_id==$user->id)
+            {
+                $comment->delete();
+                return redirect()->back();
+            }
+        return redirect()->back();
     }
 }
+

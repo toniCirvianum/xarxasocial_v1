@@ -37,4 +37,6 @@ class ImageController extends Controller
         $image = Image::find($id);
         return view('image', compact('image'));
     }
+
+    
 }

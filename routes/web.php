@@ -29,8 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/uploadimages',[ImageController::class,'index'])->name('upload.images');
     Route::patch('/uploadimages',[ImageController::class,'store'])->name('store.image');
     Route::get('detail/{image_id}',[ImageController::class,'detail'])->name('detail.image');
-    Route::post('/comment/store',[CommentController::class,'store'])->name('store.comment');
-
+    Route::patch('/comment/store',[CommentController::class,'store'])->name('store.comment');   
+    Route::get('/comment/delete',[CommentController::class,'delete'])->name('delete.comment');
+    Route::get('/like/{image_id}',[LikeController::class,'like'])->name('like');
+    Route::get('/dislike/{image_id}',[LikeController::class,'dislike'])->name('dislike');
 });
 
 require __DIR__.'/auth.php';    
