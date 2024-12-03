@@ -14,7 +14,7 @@ window.addEventListener('load', function () {
 
     }
 
-    //button like
+    //button dislike
     $(document).on('click', '.btn-like', function () {
         console.log('dislike afegit!');
         //canviem la classe del boto per accedir des de l'altra func
@@ -37,7 +37,7 @@ window.addEventListener('load', function () {
             // });
         
     });
-    //button dislike
+    //button like
     $(document).on('click', '.btn-dislike', function () {
         console.log('like afegit!');
         //canviem la classe del boto per accedir des de l'altra func
