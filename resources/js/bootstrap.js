@@ -5,8 +5,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 import jquery from 'jquery';
 
-//jquery
-// window.$ = window.jQuery = jquery;
 
 window.addEventListener('load', function () {
 
@@ -16,21 +14,6 @@ window.addEventListener('load', function () {
 
     }
 
-    function setDislike(){
-        //Treu el like de la BBDD
-        const postId = $(this).data('id');
-        axios.get(apiUrl + "/dislike/" + postId)
-            .then(response => {
-                console.log(response.data);
-                if (response.data.like) {
-                    console.log('dislike afegit!');
-                }
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
-    }
     //button like
     $(document).on('click', '.btn-like', function () {
         console.log('dislike afegit!');
@@ -40,17 +23,18 @@ window.addEventListener('load', function () {
         const icon = $(this).find('i');
         icon.removeClass('fa-solid').addClass('fa-regular');
         icon.css('color', '');
+        //aconseguim el id del post o iamtge
         const postId = $(this).data('id');
-        axios.get(apiUrl + "/dislike/" + postId)
-            .then(response => {
-                console.log(response.data);
-                if (response.data.like) {
-                    console.log('like afegit!');
-                }
-            })
-            .catch(error => {
-                console.error(error);
-            });
+        axios.get(apiUrl + "/like/" + postId)
+            // .then(response => {
+            //     console.log(response.data);
+            //     if (response.data.like) {
+            //         console.log('like afegit!');
+            //     }
+            // })
+            // .catch(error => {
+            //     console.error(error);
+            // });
         
     });
     //button dislike
@@ -64,15 +48,15 @@ window.addEventListener('load', function () {
         icon.css('color', 'red');
         const postId = $(this).data('id');
         axios.get(apiUrl + "/like/" + postId)
-            .then(response => {
-                console.log(response.data);
-                if (response.data.like) {
-                    console.log('like eliminat!');
-                }
-            })
-            .catch(error => {
-                console.error(error);
-            });
+            // .then(response => {
+            //     console.log(response.data);
+            //     if (response.data.like) {
+            //         console.log('like eliminat!');
+            //     }
+            // })
+            // .catch(error => {
+            //     console.error(error);
+            // });
 
     });
 
